@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('organisation_units', function (Blueprint $table) {
-            $table->primary('id');
+            $table->string('id', 100);
             $table->string('display_name', 100);
+
+            $table->primary('id');
         });
     }
 

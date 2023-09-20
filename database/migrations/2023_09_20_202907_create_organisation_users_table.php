@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('organisation_users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('org_id');
+            $table->string('org_id', 100);
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('org_id')->references('id')->on('organisation_units');
