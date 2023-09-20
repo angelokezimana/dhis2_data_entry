@@ -19,4 +19,9 @@ class Patient extends Model
         'dob',
         'telephone',
     ];
+
+    public function dataElements()
+    {
+        return $this->belongsToMany(DataElement::class, 'hiv_testings');
+    }
 }

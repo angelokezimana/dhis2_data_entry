@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class OrganisationUnit extends BaseModel
+class DataElement extends BaseModel
 {
     use HasFactory;
 
@@ -16,15 +16,16 @@ class OrganisationUnit extends BaseModel
     protected $fillable = [
         'id',
         'display_name',
+        'data_set_id',
     ];
 
-    public function users()
+    public function patients()
     {
-        return $this->belongsToMany(User::class, 'organisation_users');
+        return $this->belongsToMany(Patient::class, 'hiv_testings');
     }
 
-    public function dataSets()
+    public function dataSet()
     {
-        return $this->belongsToMany(DataSet::class, 'data_set_organisation');
+        return $this->belongsTo(DataSet::class, 'data_set_id');
     }
 }

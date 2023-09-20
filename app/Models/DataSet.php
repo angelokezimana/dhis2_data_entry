@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class OrganisationUnit extends BaseModel
+class DataSet extends BaseModel
 {
     use HasFactory;
 
@@ -18,13 +18,13 @@ class OrganisationUnit extends BaseModel
         'display_name',
     ];
 
-    public function users()
+    public function organisations()
     {
-        return $this->belongsToMany(User::class, 'organisation_users');
+        return $this->belongsToMany(OrganisationUnit::class, 'data_set_organisation');
     }
 
-    public function dataSets()
+    public function dataElements()
     {
-        return $this->belongsToMany(DataSet::class, 'data_set_organisation');
+        return $this->hasMany(DataElement::class, 'data_set_id');
     }
 }

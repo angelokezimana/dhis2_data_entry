@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('organisation_users', function (Blueprint $table) {
+        Schema::create('data_set_organisation', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->string('org_id', 100);
+            $table->string('data_set_id', 100);
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('org_id')->references('id')->on('organisation_units')->onDelete('cascade');
+            $table->foreign('data_set_id')->references('id')->on('data_sets')->onDelete('cascade');
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('organisation_users');
+        Schema::dropIfExists('data_set_organisation');
     }
 };

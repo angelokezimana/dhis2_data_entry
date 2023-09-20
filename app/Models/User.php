@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function organisation()
+    public function organisations()
     {
         return $this->belongsToMany(OrganisationUnit::class, 'organisation_users');
     }
