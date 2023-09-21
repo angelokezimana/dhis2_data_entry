@@ -185,4 +185,14 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | API URL
+    |--------------------------------------------------------------------------
+    |
+    | This value is the url of dhis2 api
+    |
+    */
+
+    'api_url' => env('API_URL', 'https://play.dhis2.org/40.1.0/api/'),
 ];
