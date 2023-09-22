@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             OrganisationUnitSeeder::class,
             DataSetSeeder::class,
             DataElementSeeder::class,
+            CategoryOptionComboSeeder::class,
             HivTestingSeeder::class,
         ]);
     }

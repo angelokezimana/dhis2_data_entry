@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('patient_id');
             $table->string('data_element_id', 100);
+            $table->string('category_option_combo_id', 100);
             $table->timestamp('created_at')->useCurrent();
 
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreign('data_element_id')->references('id')->on('data_elements')->onDelete('cascade');
+            $table->foreign('category_option_combo_id')->references('id')->on('category_option_combos')->onDelete('cascade');
         });
     }
 
