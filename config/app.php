@@ -187,12 +187,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | API URL
+    | API URL AND CREDENTIALS
     |--------------------------------------------------------------------------
     |
-    | This value is the url of dhis2 api
+    | Those values are the url of dhis2 api and its credentials
     |
     */
 
-    'api_url' => env('API_URL', 'https://play.dhis2.org/40.1.0/api/'),
+    'dhis2_api_url' => env('DHIS2_API_URL', 'https://play.dhis2.org/40.1.0/api'),
+    'dhis2_username' => env('DHIS2_USERNAME', 'admin'),
+    'dhis2_password' => env('DHIS2_PASSWORD', 'district'),
 ];
