@@ -60,6 +60,6 @@ class DataEntryController extends Controller
 
         return redirect()->route('dataentry.index')
             ->with('is_success', $response->successful())
-            ->with('response', $response->json());
+            ->with('response', $response->json()['message']);
     }
 }

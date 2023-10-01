@@ -1,4 +1,4 @@
-<div>
+<div class="mt-3">
     <form method="POST" action="{{ route('dataentry.store') }}">
         @csrf
         <table>

@@ -67,6 +67,7 @@ class GetDataSet extends Component
                     DB::raw('COUNT(hiv_testings.patient_id) AS value'),
                 )
                 ->groupBy('dataElement', 'categoryOptionCombo')
+                ->orderBy('data_elements.display_name')
                 ->get();
 
             $table_data_values = [];
