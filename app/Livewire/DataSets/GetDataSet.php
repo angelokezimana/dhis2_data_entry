@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\DataSets;
 
 use App\Models\OrganisationUnit;
 use Illuminate\Support\Facades\DB;
@@ -89,7 +89,7 @@ class GetDataSet extends Component
 
     public function render()
     {
-        return view('livewire.get-data-set', [
+        return view('livewire.data-sets.get-data-set', [
             'organisations' => OrganisationUnit::all()
         ]);
     }

@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @include('components.flash-message')
-                    <livewire:get-data-set /> 
+                    <livewire:data-sets.get-data-set /> 
                 </div>
             </div>
         </div>
