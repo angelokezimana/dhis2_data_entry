@@ -58,7 +58,7 @@ class DataEntryController extends Controller
         $response = Http::withBasicAuth(config('app.dhis2_username'), config('app.dhis2_password'))
             ->post(config('app.dhis2_api_url') . '/dataValueSets', $array_data);
 
-        return redirect()->route('dataentry.index')
+        return redirect()->route('dataentries.index')
             ->with('is_success', $response->successful())
             ->with('response', $response->json()['message']);
     }

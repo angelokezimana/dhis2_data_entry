@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DataEntryController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +28,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    // DataEntries
-    Route::get('/dataentry', [DataEntryController::class, 'index'])->name('dataentry.index');
-    Route::post('/dataentry', [DataEntryController::class, 'store'])->name('dataentry.store');
 });
+
+// DataEntries
+Route::resource('dataentries', DataEntryController::class)
+    ->only(['index', 'store'])
+    ->middleware(['auth', 'verified']);
+
+// Patients
+Route::resource('patients', PatientController::class)
+    ->only(['index', 'store', 'show', 'edit', 'update', 'destroy'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';
