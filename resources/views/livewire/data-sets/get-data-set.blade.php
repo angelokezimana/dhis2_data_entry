@@ -7,7 +7,7 @@
                     <label for="org" class="text-sm leading-4 font-medium text-gray-500">Organisation Unit</label>
                 </td>
                 <td>
-                    <select id="org" wire:model="org" wire:click="getDataSets" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
+                    <select id="org" wire:model.live="org" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
                         <option value="">Choose an organisation unit</option>
                         @foreach($organisations as $org_unit)
                             <option value="{{ $org_unit->id }}">{{ $org_unit->display_name }}</option>
@@ -21,7 +21,7 @@
                         <label for="dataset" class="text-sm leading-4 font-medium text-gray-500">Data Set</label>
                     </td>
                     <td>
-                        <select id="dataset" name="dataset" wire:click="getPeriods" wire:model="dataset" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
+                        <select id="dataset" name="dataset" wire:model.live="dataset" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
                             <option value="">Choose a dataset</option>
                             @foreach($datasets as $data_set)
                                 <option value="{{ $data_set->dataSetId }}">{{ $data_set->dataSet }}</option>
@@ -36,7 +36,7 @@
                         <label for="period" class="text-sm leading-4 font-medium text-gray-500">Period</label>
                     </td>
                     <td>
-                        <select id="period" name="period" wire:click="getDataValues" wire:model="period" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
+                        <select id="period" name="period" wire:model.live="period" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
                             <option value="">Choose a period</option>
                             @foreach($periods as $item)
                                 <option value="{{ $item->period }}">{{ $item->DisplayPeriod }}</option>

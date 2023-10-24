@@ -15,7 +15,7 @@ class GetDataSet extends Component
     public $period = '';
     public $dataValues = [];
 
-    public function getDataSets()
+    public function updatedOrg()
     {
         $this->datasets = [];
 
@@ -32,7 +32,7 @@ class GetDataSet extends Component
         }
     }
 
-    public function getPeriods()
+    public function updatedDataset()
     {
         $this->periods = [];
 
@@ -50,7 +50,7 @@ class GetDataSet extends Component
         }
     }
 
-    public function getDataValues()
+    public function updatedPeriod()
     {
         $this->dataValues = [];
 
