@@ -1,4 +1,7 @@
-<div class="mt-3">
+<div>
+    <p class="font-semibold text-lg uppercase text-gray-600">
+        {{ __("Patient Form") }}
+    </p>
     <form wire:submit="save" class="mt-6 space-y-6">
 
         <div>
@@ -18,7 +21,7 @@
         </div>
 
         <div>
-            <x-input-label for="telephone" :value="__('telephone')" />
+            <x-input-label for="telephone" :value="__('Telephone')" />
             <x-text-input id="telephone" name="telephone" wire:model="telephone" type="tel" class="mt-1 block w-full" autofocus autocomplete="tel" />
             @error('telephone')
                 <x-input-error class="mt-2" :messages="$message" />
