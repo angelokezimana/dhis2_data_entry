@@ -9,7 +9,6 @@
               <table class="min-w-full text-left text-sm font-light">
                 <thead class="border-b font-medium dark:border-neutral-500">
                   <tr>
-                    <th scope="col" class="px-6 py-4">#</th>
                     <th scope="col" class="px-6 py-3">Name</th>
                     <th scope="col" class="px-6 py-3">Date of birth</th>
                     <th scope="col" class="px-6 py-3">Telephone</th>
@@ -19,7 +18,6 @@
                 <tbody>
                 @foreach ($patients as $patient)
                    <tr class="border-b dark:border-neutral-500">
-                        <td class="whitespace-nowrap px-6 py-4">{{ $loop->iteration }}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{ $patient->full_name }}</td>
                         <td class="whitespace-nowrap px-6 py-4">
                             {{ \Carbon\Carbon::parse($patient->dob)->format('d/m/Y') }}
@@ -50,5 +48,6 @@
             </div>
           </div>
         </div>
+        {{ $patients->links() }}
     </div>
 </div>
