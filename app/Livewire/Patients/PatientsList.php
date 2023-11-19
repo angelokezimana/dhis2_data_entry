@@ -12,6 +12,17 @@ class PatientsList extends Component
 
     public $search_name = '';
 
+    public function delete(Patient $patient)
+    {
+        $patient_name = $patient->full_name;
+
+        $patient->delete();
+
+        return redirect()->route('patients.index')
+            ->with('is_success', true)
+            ->with('response', "Patient {$patient_name} successfully deleted!");
+    }
+
     public function render()
     {
         return view('livewire.patients.patients-list', [
