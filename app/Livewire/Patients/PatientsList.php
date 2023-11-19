@@ -10,10 +10,14 @@ class PatientsList extends Component
 {
     use WithPagination;
 
+    public $search_name = '';
+
     public function render()
     {
         return view('livewire.patients.patients-list', [
-            'patients' => Patient::orderBy('id', 'desc')->paginate(5),
+            'patients' => Patient::where('full_name', 'like', "%{$this->search_name}%")
+                ->orderBy('id', 'desc')
+                ->paginate(5),
         ]);
     }
 }
