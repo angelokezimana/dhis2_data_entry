@@ -13,11 +13,20 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The path to your application's "home" route.
      *
-     * Typically, users are redirected here after authentication.
+     * Typically, users are redirected here after choosing the organization unit they want to work on.
      *
      * @var string
      */
     public const HOME = '/dashboard';
+
+    /**
+     * The path to your application's "choose-org" route.
+     *
+     * Typically, users are redirected here after authentication to choose an org_unit.
+     *
+     * @var string
+     */
+    public const ORG_UNIT = '/choose-org';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

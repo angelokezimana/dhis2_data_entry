@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChooseOrgUnitController;
 use App\Http\Controllers\DataEntryController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
@@ -20,11 +21,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/choose-org', [ChooseOrgUnitController::class, 'index'])
+    ->name('choose.org')
+    ->middleware(['auth', 'verified']);
+
+Route::post('/choose-org/{org_unit}', [ChooseOrgUnitController::class, 'save'])
+    ->name('save.chosen.org')
+    ->middleware(['auth', 'verified']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'org.chosen'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'org.chosen'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -33,11 +42,11 @@ Route::middleware('auth')->group(function () {
 // DataEntries
 Route::resource('dataentries', DataEntryController::class)
     ->only(['index', 'store'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified', 'org.chosen']);
 
 // Patients
 Route::resource('patients', PatientController::class)
     ->only(['index', 'store', 'show', 'edit', 'update', 'destroy'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified', 'org.chosen']);
 
 require __DIR__ . '/auth.php';
