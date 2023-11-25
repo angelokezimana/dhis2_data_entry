@@ -33,14 +33,20 @@ class ChooseOrgUnitController extends Controller
 
     public function save(Request $request, OrganisationUnit $org_unit)
     {
-        $org_unit = DB::table('organisation_users')
+        $org_unit = DB::table('organisation_units')
+            ->join('organisation_users', 'organisation_units.id', '=', 'organisation_users.org_id')
             ->where('organisation_users.user_id', '=', Auth::id())
             ->where('organisation_users.org_id', '=', $org_unit->id)
-            ->select('organisation_users.org_id AS id')
-            ->first();
+            ->select(
+                'organisation_units.id',
+                'organisation_units.display_name'
+            )->first();
 
         if ($org_unit) {
-            $request->session()->put('org_unit', $org_unit->id);
+            $request->session()->put('org_unit', [
+                'id' => $org_unit->id,
+                'display_name' => $org_unit->display_name
+            ]);
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);

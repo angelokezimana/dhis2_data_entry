@@ -5,8 +5,15 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="/logos/dhis2.png" alt="dhis2 logo" class="h-16 w-16">
+                    <a href="{{ route('dashboard') }}" class="flex items-center">
+                        @if (session()->has('org_unit') && array_key_exists('display_name', session()->get('org_unit')))
+                            <img src="/dhis2-icon.png" alt="dhis2 logo" class="h-6 w-6">
+                            <span class="pl-2 font-semibold text-gray-600">
+                                {{ session()->get('org_unit')['display_name'] }}
+                            </span>
+                        @else
+                            <img src="/logos/dhis2.png" alt="dhis2 logo" class="h-16 w-16">
+                        @endif
                     </a>
                 </div>
                 @if (session()->has('org_unit'))

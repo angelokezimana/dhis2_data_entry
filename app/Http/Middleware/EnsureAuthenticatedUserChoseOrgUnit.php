@@ -26,13 +26,16 @@ class EnsureAuthenticatedUserChoseOrgUnit
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->session()->has('org_unit')) {
+        if (
+            !$request->session()->has('org_unit') ||
+            !array_key_exists('id', $request->session()->get('org_unit'))
+        ) {
             $this->logout($request);
             return redirect('/');
         }
-        
-        $org_unit = OrganisationUnit::find($request->session()->get('org_unit'));
-        
+
+        $org_unit = OrganisationUnit::find($request->session()->get('org_unit')['id']);
+
         if (!$org_unit) {
             $this->logout($request);
             return redirect('/');
