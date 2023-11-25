@@ -46,7 +46,7 @@ Route::resource('dataentries', DataEntryController::class)
 
 // Patients
 Route::resource('patients', PatientController::class)
-    ->only(['index', 'store', 'show', 'edit', 'update', 'destroy'])
+    ->only(['index', 'show'])
     ->middleware(['auth', 'verified', 'org.chosen']);
 
 require __DIR__ . '/auth.php';

@@ -31,7 +31,8 @@
                                     </td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $patient->telephone }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
-                                        <button type="button"
+                                        <a href="{{ route('patients.show', $patient->id) }}"
+                                            style="-webkit-appearance: button;-moz-appearance: button;appearance: button;"
                                             class="bg-green-600 border border-transparent rounded-md text-white hover:bg-green-500 active:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -40,9 +41,9 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                             </svg>
-                                        </button>
+                                        </a>
                                         <button type="button"
-                                            wire:click="$dispatch('set-patient', { patient: {{ $patient }} })"
+                                            wire:click="$dispatch('set-patient', { patient: '{{ $patient->id }}' })"
                                             class="ml-3 bg-blue-600 border border-transparent rounded-md text-white hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -50,7 +51,7 @@
                                                     d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                             </svg>
                                         </button>
-                                        <button type="button" wire:click="delete({{ $patient->id }})"
+                                        <button type="button" wire:click="delete('{{ $patient->id }}')"
                                             wire:confirm="Are you sure you want to delete this patient?"
                                             class="ml-3 bg-red-600 border border-transparent rounded-md text-white hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
