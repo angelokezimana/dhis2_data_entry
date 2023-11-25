@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('hiv_testings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('patient_id');
+            $table->uuid('patient_id');
             $table->string('data_element_id', 100);
             $table->string('category_option_combo_id', 100);
             $table->timestamp('created_at')->useCurrent();
