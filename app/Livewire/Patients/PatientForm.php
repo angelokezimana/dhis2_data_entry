@@ -3,23 +3,23 @@
 namespace App\Livewire\Patients;
 
 use App\Models\Patient;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Validate;
 
 class PatientForm extends Component
 {
     public ?Patient $patient = null;
 
-    #[Rule('required', as: 'full name')]
+    #[Validate('required', as: 'full name')]
     public $full_name = '';
 
-    #[Rule('required', as: 'date of birth')]
+    #[Validate('required', as: 'date of birth')]
     public $dob = '';
 
     public $telephone = '';
 
-    #[On('set-patient')] 
+    #[On('set-patient')]
     public function setPatient(Patient $patient)
     {
         $this->patient = $patient;
@@ -31,9 +31,12 @@ class PatientForm extends Component
 
     public function store()
     {
-        Patient::create(
-            $this->only(['full_name', 'dob', 'telephone'])
-        );
+        Patient::create([
+            'full_name' => $this->full_name,
+            'dob' => $this->dob,
+            'telephone' => $this->telephone,
+            'org_id' => session()->get('org_unit')['id'],
+        ]);
     }
 
     public function update()

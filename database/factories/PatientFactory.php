@@ -20,6 +20,7 @@ class PatientFactory extends Factory
             'full_name' => fake()->name(),
             'dob' => fake()->date(),
             'telephone' => fake()->phoneNumber(),
+            'org_id' => 'DiszpKrYNg8',
         ];
     }
 }

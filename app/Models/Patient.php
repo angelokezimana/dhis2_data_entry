@@ -20,6 +20,7 @@ class Patient extends Model
         'full_name',
         'dob',
         'telephone',
+        'org_id',
     ];
 
     public function dataElements()

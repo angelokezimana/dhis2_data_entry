@@ -26,7 +26,8 @@ class PatientsList extends Component
     public function render()
     {
         return view('livewire.patients.patients-list', [
-            'patients' => Patient::where('full_name', 'like', "%{$this->search_name}%")
+            'patients' => Patient::where('org_id', '=', session()->get('org_unit')['id'])
+                ->where('full_name', 'like', "%{$this->search_name}%")
                 ->orderBy('id', 'desc')
                 ->paginate(5),
         ]);
