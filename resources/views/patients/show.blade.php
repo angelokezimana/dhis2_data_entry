@@ -10,7 +10,7 @@
             <div class="mb-3 bg-white overflow-hidden shadow-sm sm:rounded-lg basis-1/3">
                 <div class="p-6 text-gray-900">
                     @include('components.flash-message')
-                    <livewire:patients.patient-details-form />
+                    <livewire:patients.patient-details-form :patient="$patient" />
                 </div>
             </div>
 
