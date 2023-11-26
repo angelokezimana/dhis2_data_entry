@@ -10,7 +10,7 @@
                     <select id="org" wire:model.live="org" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
                         <option value="">Choose an organisation unit</option>
                         @foreach($organisations as $org_unit)
-                            <option value="{{ $org_unit->id }}">{{ $org_unit->display_name }}</option>
+                            <option wire:key="{{ $org_unit->id }}" value="{{ $org_unit->id }}">{{ $org_unit->display_name }}</option>
                         @endforeach
                     </select>
                 </td>
@@ -24,7 +24,7 @@
                         <select id="dataset" name="dataset" wire:model.live="dataset" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
                             <option value="">Choose a dataset</option>
                             @foreach($datasets as $data_set)
-                                <option value="{{ $data_set->dataSetId }}">{{ $data_set->dataSet }}</option>
+                                <option wire:key="{{ $data_set->dataSetId }}" value="{{ $data_set->dataSetId }}">{{ $data_set->dataSet }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -39,7 +39,7 @@
                         <select id="period" name="period" wire:model.live="period" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
                             <option value="">Choose a period</option>
                             @foreach($periods as $item)
-                                <option value="{{ $item->period }}">{{ $item->DisplayPeriod }}</option>
+                                <option wire:key="{{ $item->period }}" value="{{ $item->period }}">{{ $item->DisplayPeriod }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -64,7 +64,7 @@
                     </thead>
                     <tbody>
                     @foreach ($this->dataValues as $data_element => $values)
-                       <tr class="border-b dark:border-neutral-500">
+                       <tr wire:key="{{ $data_element }}" class="border-b dark:border-neutral-500">
                            <td class="whitespace-nowrap px-6 py-4">{{ $data_element }}</td>
                            <td class="whitespace-nowrap px-6 py-4">{{ $values['<15y'] ?? 0 }}</td>
                            <td class="whitespace-nowrap px-6 py-4">{{ $values['15-24y'] ?? 0 }}</td>

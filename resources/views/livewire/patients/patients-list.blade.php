@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                             @forelse ($patients as $patient)
-                                <tr class="border-b dark:border-neutral-500">
+                                <tr wire:key="{{ $patient->id }}" class="border-b dark:border-neutral-500">
                                     <td class="whitespace-nowrap px-6 py-4">{{ $patient->full_name }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         {{ \Carbon\Carbon::parse($patient->dob)->format('d/m/Y') }}
