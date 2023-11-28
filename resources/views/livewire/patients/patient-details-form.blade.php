@@ -26,7 +26,7 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
                 <option value="">Choose a data element</option>
                 @foreach ($data_elements as $data_el)
-                    <option wire:key="{{ $data_el->id }}" value="{{ $data_el->id }}">
+                    <option wire:key="{{ $data_el->id }}" value="{{ $data_el->id }}" {{ $data_el->id === $data_element ? 'selected' : '' }}>
                         {{ $data_el->display_name }}
                     </option>
                 @endforeach
