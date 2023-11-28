@@ -5,10 +5,10 @@
     <form wire:submit="save" class="mt-6 space-y-6">
 
         <div>
-            <x-input-label for="data_set" :value="__('Data Set')" />
+            <x-input-label for="data_set" :value="__('Dataset')" />
             <select id="data_set" wire:model.live="data_set"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
-                <option value="">Choose a data set</option>
+                <option value="">Choose a dataset</option>
                 @foreach ($data_sets as $data_s)
                     <option wire:key="{{ $data_s->id }}" value="{{ $data_s->id }}">
                         {{ $data_s->display_name }}

@@ -18,7 +18,7 @@
             @if(count($datasets) > 0)
                 <tr>
                     <td class="pr-4">
-                        <label for="dataset" class="text-sm leading-4 font-medium text-gray-500">Data Set</label>
+                        <label for="dataset" class="text-sm leading-4 font-medium text-gray-500">Dataset</label>
                     </td>
                     <td>
                         <select id="dataset" name="dataset" wire:model.live="dataset" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">

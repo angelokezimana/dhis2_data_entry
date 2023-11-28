@@ -11,7 +11,7 @@ class PatientDetailsForm extends Component
 {
     public Patient $patient;
 
-    #[Validate('required', as: 'data set')]
+    #[Validate('required', as: 'dataset')]
     public $data_set = '';
 
     #[Validate('required', as: 'data element')]
