@@ -16,7 +16,7 @@
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg basis-2/3">
                 <div class="p-6 text-gray-900">
-                    <livewire:patients.patient-details-list />
+                    <livewire:patients.patient-details-list :patient="$patient" />
                 </div>
             </div>
         </div>
