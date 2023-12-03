@@ -60,7 +60,7 @@ class PatientDetailsForm extends Component
         $this->data_set = $hiv_testing->dataset_id;
         $this->updatedDataSet();
         $this->data_element = $hiv_testing->data_element_id;
-        $this->created_at = $hiv_testing->date_occurred;
+        $this->created_at = date('Y-m-d H:i', strtotime($hiv_testing->date_occurred));
     }
 
     public function store()
