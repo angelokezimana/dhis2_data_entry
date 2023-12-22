@@ -73,10 +73,10 @@ Generate application key:
 php artisan key:generate
 ```
 
-Migrate the database:
+Migrate and seed the database:
 
 ```bash
-php artisan migrate
+php artisan migrate --seed
 ```
 
 Start the development server:
