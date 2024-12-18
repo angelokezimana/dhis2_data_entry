@@ -58,8 +58,11 @@ class DataEntryController extends Controller
         $response = Http::withBasicAuth(config('app.dhis2_username'), config('app.dhis2_password'))
             ->post(config('app.dhis2_api_url') . '/dataValueSets', $array_data);
 
+        $message = $response->json()['message'] ?? null;
+        $is_success = $message && $response->successful();
+
         return redirect()->route('dataentries.index')
-            ->with('is_success', $response->successful())
-            ->with('response', $response->json()['message']);
+            ->with('is_success', $is_success)
+            ->with('response', $message ?? "There is a problem sending data to the DHIS2 server. Contact the administrator for more information");
     }
 }
